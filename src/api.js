@@ -1,27 +1,4 @@
-// export function fetchTopics(setTopics) {
-//   fetch('https://nc-news-be-cto4.onrender.com/api/topics')
-//     .then((res) => res.json())
-//     .then(({topics}) => {
-//       setTopics(topics);
-//     })
-// }
 
-// export function fetchArticles(setArticles) {
-//   fetch('https://nc-news-be-cto4.onrender.com/api/articles')
-//     .then((res) => res.json())
-//     .then(({articles}) => {
-//       setArticles(articles);
-//     });
-// }
-
-// export function fetchUsers(setUsers) {
-//     fetch('https://nc-news-be-cto4.onrender.com/api/users')
-//     .then((res) => res.json())
-//     .then(({users}) => {
-//       setUsers(users);
-//     });
-
-// }
 export function fetchApi(setTopics, setArticles, setUsers, setLoading) {
 
   return Promise.all([

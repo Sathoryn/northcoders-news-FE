@@ -1,3 +1,8 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -43,4 +48,14 @@
 
 #newsPaperImage{
   max-width: 10rem;
+}
+
+.articleImages{
+  max-width:  25rem;
+  
+}
+
+.articleListItem{
+  list-style: none;
+  padding-bottom: 2rem;
 }

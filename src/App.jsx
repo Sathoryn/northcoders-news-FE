@@ -11,14 +11,14 @@ function App() {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchApi(setArticles, setTopics, setUsers, setLoading);
+    fetchApi(setTopics, setArticles, setUsers, setLoading);
   }, []);
 
   if (isLoading === true) return <p>Loading...</p>;
 
   return (
     <>
-      <Homepage />
+      <Homepage articles={articles} />
     </>
   );
 }
