@@ -1,27 +1,24 @@
-import { useState } from 'react';
-import image from './assets/paper.png';
+import { Homepage } from './components/HomePage.jsx';
+import { useEffect, useState } from 'react';
+import { fetchApi } from './api.js';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
+  const [topics, setTopics] = useState([]);
+  const [articles, setArticles] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchApi(setArticles, setTopics, setUsers, setLoading);
+  }, []);
+
+  if (isLoading === true) return <p>Loading...</p>;
 
   return (
     <>
-      <header>
-        <h1>News</h1>
-        <img id="newsPaperImage" src={image} alt="image of a news paper" />
-      </header>
-      <div className="search">
-        <label htmlFor="searchBar">Search Topic:</label>
-        <input id="searchBar" type="search" />
-      </div>
-
-      <div className="topicButtons">
-        <button>Coding</button>
-        <button>Football</button>
-        <button>Cooking</button>
-      </div>
-      <footer>footer information</footer>
+      <Homepage />
     </>
   );
 }
