@@ -32,6 +32,25 @@ li {
   background-color: #2f2f2f;
 }
 
-.articleButton {
+.likeButton {
   display: flex;
+  justify-content: flex-end;
+}
+
+#MainarticleImages{
+  margin-top: 1rem;
+  max-width: 50rem;
+
+}
+
+#singleArticle{
+  list-style-position: inside;
+  list-style-type: square;
+  border-width: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem #1a1a1a;
+  list-style: none;
+  padding: 1rem;
+  margin-top: 2rem;
+  background-color: #2f2f2f;
 }
