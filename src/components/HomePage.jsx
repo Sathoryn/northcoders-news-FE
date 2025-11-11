@@ -4,20 +4,35 @@ export function Homepage({ articles }) {
   console.log(articles);
 
   function ArticleList() {
-    const articleList = articles.map((article) => {
+    const articleList = articles.map((article, i) => {
       const date = article.created_at.split('T')[0].split('-').reverse().join('-');
+
+      if (i === 0) {
+        return (
+          <li class="<MainArticleItem" key={article.article_id}>
+            <h2>{article.title}</h2>
+            <h4>
+              {article.topic}, {article.author}, {date}
+            </h4>
+            <img class="MainarticleImages" src={article.article_img_url} alt="" />
+            <button class='articleButton' type="button" alt="like button">
+              likes: {article.votes}
+            </button>
+          </li>
+        );
+      }
 
       return (
         <li class="articleListItem" key={article.article_id}>
           <h2>{article.title}</h2>
+          <h4>
+            {article.topic}, {article.author}, {date}
+          </h4>
           <img class="articleImages" src={article.article_img_url} alt="" />
-          <h3>{article.topic}</h3>
-          <p>
-            {article.author}, {date}
-          </p>
-          <button type="button" alt="like button">
-            like
+          <button class='articleButton' type="button" alt="like button">
+              likes: {article.votes}
           </button>
+          
         </li>
       );
     });
