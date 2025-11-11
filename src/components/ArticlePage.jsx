@@ -20,7 +20,7 @@ export function ArticlePage() {
             {author}, {date}
           </h4>
           <p>{body}</p>
-          <button className="likeButton" id={comment_id} type="button" alt="like button">
+          <button className="like-button " id={comment_id} type="button" alt="like button">
             likes: {votes}
           </button>
         </li>
@@ -40,26 +40,27 @@ export function ArticlePage() {
 
   return (
     <>
-      <section className="mainArticleItem" key={article_id}>
-        <h2>{title}</h2>
-        <h4>
-          {topic}, {author}, {date}
-        </h4>
-        <Link to={`/articles/${article_id}`} state={{ article }}>
-          <img className="mainArticleimage" src={article_img_url} alt={title} />
-        </Link>
-        <p>{body}</p>
-        <button className="likeButton" id={article_id} type="button" alt="like button">
-          likes: {votes}
-        </button>{' '}
-      </section>
+       <div className="main-article-item">
+          <Link to="/">
+            <button className="back-home-button">Back to Homepage</button>
+          </Link>
+          <h2>{title}</h2>
+          <h4>
+            {topic}, {author}, {date}
+          </h4>
+          <Link to={`/articles/${article_id}`} state={{ article }}>
+            <img className="main-article-image" src={article_img_url} alt={title} />
+          </Link>
+          <p>{body}</p>
+          <button className="like-button " id={article_id} type="button" alt="like button">
+            likes: {votes}
+          </button>{' '}
+        </div>
 
-      <Link to="/">
-        <button className="backHomeButton">Back to Homepage</button>
-      </Link>
-
+      <ul className='comments-list'>
       <CommentsList />
-      <p>hello</p>
+      </ul>
+
     </>
   );
 }

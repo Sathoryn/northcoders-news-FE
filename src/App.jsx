@@ -20,25 +20,27 @@ function App() {
 
   return (
     <>
-      <header>
-        <h1>News</h1>
-        <img id="newsPaperImage" src={image} alt="image of a news paper" />
-      </header>
+      <div className="grid-container">
+        <header>
+          <img id="newsPaperImage" src={image} alt="image of a news paper" />
+          <h1>News</h1>
+        </header>
 
-      <section className="search">
-        <label htmlFor="searchBar">Search Topic: </label>
-        <input id="searchBar" type="search" />
-        <button className="searchButton">Coding</button>
-        <button className="searchButton">Football</button>
-        <button className="searchButton">Cooking</button>
-      </section>
+        <section className="search">
+          <label htmlFor="searchBar">Search Topic: </label>
+          <input id="searchBar" type="search" />
+          <button className="searchButton">Coding</button>
+          <button className="searchButton">Football</button>
+          <button className="searchButton">Cooking</button>
+        </section>
 
-      <Routes>
-        <Route path="/" element={<Homepage articles={articles} />}></Route>
-        <Route path="/articles/:article_id" element={<ArticlePage />}></Route>
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Homepage articles={articles} />}></Route>
+          <Route path="/articles/:article_id" element={<ArticlePage />}></Route>
+        </Routes>
 
-      <footer>footer information</footer>
+        <footer>footer information</footer>
+      </div>
     </>
   );
 }
