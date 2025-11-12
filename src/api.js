@@ -24,21 +24,24 @@ export function fetchApi(setTopics, setArticles, setUsers, setLoading) {
     });
 }
 
-export function fetchArticleAndComments(article_id, setComments, setArticle, setLoading) {
-  return Promise.all([
-    fetch(`https://nc-news-be-cto4.onrender.com/api/articles/${article_id}/comments`)
-      .then((res) => res.json())
-      .then(({ comments }) => {
-        setComments(comments);
-      }),
-    fetch(`https://nc-news-be-cto4.onrender.com/api/articles/${article_id}`)
-      .then((res) => res.json())
-      .then(({ article }) => {
-        setArticle(article);
-      }),
-  ])
-    .then(() => {
-      setLoading(false);
+export function fetchComments(article_id) {
+
+  return fetch(`https://nc-news-be-cto4.onrender.com/api/articles/${article_id}/comments`)
+    .then((res) => res.json())
+    .then(({ comments }) => {
+      return comments;
+    })
+    .catch(() => {
+      console.log('Something is broken.');
+    });
+}
+
+export function fetchArticle(article_id) {
+
+  return fetch(`https://nc-news-be-cto4.onrender.com/api/articles/${article_id}`)
+    .then((res) => res.json())
+    .then(({ article }) => {
+      return article;
     })
     .catch(() => {
       console.log('Something is broken.');
