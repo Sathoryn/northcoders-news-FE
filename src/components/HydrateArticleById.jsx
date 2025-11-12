@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
+import { handleArticleVotes } from './Vote';
 
-export function ArticleById( {article} ) {
-  const { article_id, title, topic, author, article_img_url, votes, body,created_at } = article;
+export function ArticleById({ data: [article, setArticle, hasVoted, setHasVoted] }) {
+  const { article_id, title, topic, author, article_img_url, votes, body, created_at } = article;
   const date = created_at.split('T')[0].split('-').reverse().join('-');
 
   return (
@@ -15,7 +16,15 @@ export function ArticleById( {article} ) {
       </h3>
       <img className="main-article-image" src={article_img_url} alt={title} />
       <p>{body}</p>
-      <button className="like-button " id={article_id} type="button" alt="like button">
+      <button
+        className="like-button "
+        id={article_id}
+        type="button"
+        alt="like button"
+        onClick={() => {
+          handleArticleVotes(article, setArticle, hasVoted, setHasVoted);
+        }}
+      >
         likes: {votes}
       </button>
     </section>
