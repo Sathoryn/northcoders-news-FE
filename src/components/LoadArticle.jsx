@@ -6,6 +6,7 @@ export function LoadArticle({ article_id }) {
   const [article, setArticle] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [hasVoted, setHasVoted] = useState(false);
+  // const [hasCommented, setHasCommented] = useState('')
 
   useEffect(() => {
     fetchArticle(article_id).then((article) => {
@@ -15,9 +16,10 @@ export function LoadArticle({ article_id }) {
   }, [article_id]);
 
   if (isLoading === true) return <p>Loading...</p>;
+  
   return (
     <>
-      <SingleArticle articleData={{article, setArticle, hasVoted, setHasVoted}} />
+      <SingleArticle articleData={{article, setArticle, hasVoted, setHasVoted,}} />
     </>
   );
 }

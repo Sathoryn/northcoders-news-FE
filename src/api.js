@@ -66,3 +66,25 @@ export function putArticleVote(article, newVote) {
       console.error('Error!', error);
     });
 }
+
+
+export function postCommentToArticle(article_id, body, author) {
+  fetch(`https://nc-news-be-cto4.onrender.com/api/articles/${article_id}/comments`, {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify({ author: author, body: body }),
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error('Nothing was posted something went wrong');
+      return res.json();
+    })
+    .then((res) => {
+      console.log('Comment successfully posted!', res);
+    })
+    .catch((error) => {
+      console.error('Error!', error);
+    });
+}
