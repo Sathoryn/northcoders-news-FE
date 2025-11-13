@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { fetchComments } from '../api';
-import { CommentsList } from './HydrateComments';
+import { CommentsList } from './SingleArticleComments';
 
 export function LoadComments({ article_id }) {
   const [comments, setComments] = useState([]);
@@ -24,8 +24,11 @@ export function LoadComments({ article_id }) {
   return (
     <>
       <ul className="comments-list">
-        <CommentsList data={[comments, setComments, hasVoted, setHasVoted]} />
+        <CommentsList commentsData={{comments, setComments, hasVoted, setHasVoted}} />
       </ul>
     </>
   );
 }
+
+
+

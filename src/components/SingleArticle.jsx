@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
-import { handleArticleVotes } from './Vote';
+import { handleArticleVotes } from './votingUtils';
 
-export function ArticleById({ data: [article, setArticle, hasVoted, setHasVoted] }) {
+export function SingleArticle({ articleData }) {
+  const { article, hasVoted } = articleData;
+
   const { article_id, title, topic, author, article_img_url, votes, body, created_at } = article;
   const date = created_at.split('T')[0].split('-').reverse().join('-');
 
@@ -22,11 +24,12 @@ export function ArticleById({ data: [article, setArticle, hasVoted, setHasVoted]
         type="button"
         alt="like button"
         onClick={() => {
-          handleArticleVotes(article, setArticle, hasVoted, setHasVoted);
+          handleArticleVotes(articleData);
         }}
       >
         likes: {votes}
       </button>
+      {/* {hasVoted && <p>Unlike</p>} */}
     </section>
   );
 }

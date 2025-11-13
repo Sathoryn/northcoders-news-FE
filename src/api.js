@@ -25,7 +25,6 @@ export function fetchApi(setTopics, setArticles, setUsers, setLoading) {
 }
 
 export function fetchComments(article_id) {
-
   return fetch(`https://nc-news-be-cto4.onrender.com/api/articles/${article_id}/comments`)
     .then((res) => res.json())
     .then(({ comments }) => {
@@ -37,7 +36,6 @@ export function fetchComments(article_id) {
 }
 
 export function fetchArticle(article_id) {
-
   return fetch(`https://nc-news-be-cto4.onrender.com/api/articles/${article_id}`)
     .then((res) => res.json())
     .then(({ article }) => {
@@ -45,5 +43,26 @@ export function fetchArticle(article_id) {
     })
     .catch(() => {
       console.log('Something is broken.');
+    });
+}
+
+export function putArticleVote(article, newVote) {
+  fetch(`https://nc-news-be-cto4.onrender.com/api/articles/${article.article_id}`, {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'PATCH',
+    body: JSON.stringify({ increaseVotes: newVote }),
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error('Nothing was updated something went wrong');
+      return res.json();
+    })
+    .then((res) => {
+      console.log('Vote successfully updated!', res);
+    })
+    .catch((error) => {
+      console.error('Error!', error);
     });
 }

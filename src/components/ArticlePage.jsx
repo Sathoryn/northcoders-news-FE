@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { LoadArticle } from './LoadArticleById';
+import { LoadArticle } from './LoadArticle';
 import { LoadComments } from './LoadComments';
 
 

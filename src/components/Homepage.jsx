@@ -1,4 +1,5 @@
-import { MainArticle, ArticleList } from './HydrateHomepage';
+import { MainArticle } from './MainArticle';
+import { ArticleList } from './ArticleList';
 
 export function Homepage({ articles }) {
   return (

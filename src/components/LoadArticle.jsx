@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { fetchArticle } from '../api';
-import { ArticleById } from './HydrateArticleById';
+import { SingleArticle } from './SingleArticle';
 
 export function LoadArticle({ article_id }) {
   const [article, setArticle] = useState([]);
@@ -12,12 +12,12 @@ export function LoadArticle({ article_id }) {
       setArticle(article);
       setLoading(false);
     });
-  }, []);
+  }, [article_id]);
 
   if (isLoading === true) return <p>Loading...</p>;
   return (
     <>
-      <ArticleById data={[article, setArticle, hasVoted, setHasVoted]} />
+      <SingleArticle articleData={{article, setArticle, hasVoted, setHasVoted}} />
     </>
   );
 }
