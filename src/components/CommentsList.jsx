@@ -3,7 +3,7 @@ import noVote from '../assets/noVote.png';
 import { DeleteCommentButton } from './DeleteCommentButton';
 
 export function CommentsList({ commentsData }) {
-  const { comments, setComments, isUser } = commentsData;
+  const { comments, setComments, user } = commentsData;
 
   return comments.map((comment) => {
     const { body, author, votes, comment_id } = comment;
@@ -29,7 +29,7 @@ export function CommentsList({ commentsData }) {
           />
           <label htmlFor="comment-vote-button">Votes:{votes}</label>
 
-          {isUser[comment_id] && <DeleteCommentButton commentData={{ comment_id, comments, setComments }} />}
+          {author === user && <DeleteCommentButton commentData={{ comment_id, comments, setComments }} />}
         </section>
       </li>
     );
