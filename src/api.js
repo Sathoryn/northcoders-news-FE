@@ -67,9 +67,8 @@ export function putArticleVote(article, newVote) {
     });
 }
 
-
 export function postCommentToArticle(article_id, body, author) {
-  fetch(`https://nc-news-be-cto4.onrender.com/api/articles/${article_id}/comments`, {
+  return fetch(`https://nc-news-be-cto4.onrender.com/api/articles/${article_id}/comments`, {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -83,8 +82,18 @@ export function postCommentToArticle(article_id, body, author) {
     })
     .then((res) => {
       console.log('Comment successfully posted!', res);
-    })
-    .catch((error) => {
-      console.error('Error!', error);
+      return res;
     });
+}
+
+export function deleteCommentFromArticle(comment_id) {
+  return fetch(`https://nc-news-be-cto4.onrender.com/api/comments/${comment_id}`, {
+    
+    method: 'DELETE',
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error('Nothing was deleted something went wrong');
+      if(res.status === 204) return null;
+    })
+
 }

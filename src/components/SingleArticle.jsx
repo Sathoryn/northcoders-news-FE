@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { handleArticleVotes } from './votingUtils';
-import { addCommentToArticle } from './addCommentToArticle';
+import { handleArticleVotes } from '../utils/votingUtils';
+import { addCommentToArticle } from '../utils/addCommentToArticleUtils';
 
 import noVote from '../assets/noVote.png';
 import upVote from '../assets/upVote.png';
 
 export function SingleArticle({ articleData }) {
-  const { article, hasVoted } = articleData;
+  const { article, hasVoted, comments, setComments } = articleData;
 
   const { article_id, title, topic, author, article_img_url, votes, body, created_at } = article;
   const date = created_at.split('T')[0].split('-').reverse().join('-');
@@ -32,7 +32,6 @@ export function SingleArticle({ articleData }) {
         <textarea
           className="add-comment"
           type="text"
-          defaultValue="Add a comment..."
           value={commentText}
           onChange={(e) => {
             setCommentText(e.target.value);
@@ -40,7 +39,7 @@ export function SingleArticle({ articleData }) {
         />
       </section>
 
-      <section className="vote-and-comment-buttons">
+      <section className="article-vote-button">
         <img
           src={hasVotedImage}
           className="vote-button "
@@ -54,11 +53,11 @@ export function SingleArticle({ articleData }) {
         <label htmlFor="vote-button">Votes:{votes}</label>
         <button
           className="submit-comment"
-          d={article_id}
+          id={article_id}
           type="button"
           alt="like button"
           onClick={() => {
-            addCommentToArticle({ article_id, commentText, setCommentText });
+            addCommentToArticle({ article_id, commentText, setCommentText, comments, setComments });
           }}
         >
           Comment
@@ -67,3 +66,5 @@ export function SingleArticle({ articleData }) {
     </section>
   );
 }
+
+

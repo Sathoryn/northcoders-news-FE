@@ -1,18 +1,18 @@
-import { fetchComments, postCommentToArticle } from '../api';
+import { putArticleVote } from '../api';
 
-export function addCommentToArticle({ article_id, commentText, setCommentText }) {
-  if (commentText.length > 0 && commentText.length < 1000) {
-    const body = commentText;
-    const author = 'jessjelly';
-
-   
-
-    postCommentToArticle(article_id, body, author);
-    fetchComments(article_id);
-    setCommentText('');
+export function handleArticleVotes({ article, setArticle, hasVoted, setHasVoted }) {
+  let newVote = article.votes;
+  if (!hasVoted) {
+    newVote++;
+    setArticle({ ...article, votes: newVote });
+    setHasVoted(true);
+  } else {
+    --newVote;
+    setArticle({ ...article, votes: newVote });
+    setHasVoted(false);
   }
 
-  
+  putArticleVote(article, newVote);
 }
 
 export function handleCommentVotes(clickedComment_id, { comments, setComments, hasVoted, setHasVoted }) {

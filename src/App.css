@@ -96,12 +96,15 @@ header {
   max-width: 20rem;
 }
 
+.delete-comment:hover,
 .vote-button:hover,
 .main-article-image:hover,
 .article-image:hover {
   border-color: #6d938c;
 }
 
+.delete-comment:focus,
+.delete-comment:focus-visible,
 .vote-button:focus,
 .vote-button:focus-visible,
 .main-article-image:focus,
@@ -125,14 +128,26 @@ header {
   transition: border-color 0.25s;
 }
 
-.vote-and-comment-buttons {
+.delete-vote-buttons,
+.comment-vote-buttons,
+.article-vote-button {
   display: flex;
   align-items: center;
 }
-.submit-comment{
+
+.submit-comment {
   display: flex;
   align-items: right;
   margin-left: 25rem;
+}
+
+
+.delete-comment {
+  display: flex;
+  align-items: right;
+  margin-left: 22.2rem;
+  min-width: 10.3rem;
+  
 }
 
 .add-comment {
